@@ -58,6 +58,8 @@ plt.xlabel('Epoch')
 plt.ylabel('Classification Error')
 plt.title('Classification Error over Training')
 
+
+
 # Plot predictions
 plt.subplot(313)
 plt.scatter(random_data[:, 0], random_data[:, 1], c=predictions, cmap='coolwarm', label='Predicted Output')
@@ -66,6 +68,8 @@ plt.xlabel('Points')
 plt.ylabel('Output')
 plt.legend()
 plt.colorbar(label='Output')
+
+
 
 plt.tight_layout()
 plt.show()
