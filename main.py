@@ -10,7 +10,7 @@ targets = np.array([[0], [1], [1], [0]])
 
 # Part 2: Perceptron Training and Evaluation
 learning_rate = 1
-epochs = 500
+epochs = 350
 start = time.time()
 
 perceptron = Perceptron(learning_rate=learning_rate)
@@ -49,14 +49,15 @@ plt.plot(history['mse_hidden'], label='Hidden Layer MSE')
 plt.title('Mean Squared Error over all inputs in hidden layer')
 plt.xlabel('Epochs')
 plt.ylabel('MSE')
-plt.legend()
+
+
 
 plt.subplot(312)
 plt.plot(history['mse_output'], label='Output Layer MSE')
 plt.title('Mean Squared Error Output Layer')
 plt.xlabel('Epochs')
 plt.ylabel('MSE')
-plt.legend()
+
 
 # Plot classification error
 plt.subplot(313)
@@ -83,10 +84,18 @@ num_tests = 10
 accuracies = perform_tests(num_tests=num_tests, num_epochs=epochs, learning_rate=learning_rate)
 
 # Plot the accuracies
-plt.figure(figsize=(8, 6))
+
 plt.bar(range(1, num_tests + 1), accuracies, color='skyblue')
 plt.xlabel('Test')
 plt.ylabel('Accuracy')
 plt.title('Accuracy of Perceptron on XOR Problem ({} tests)'.format(num_tests))
 plt.ylim(0, 1)
 plt.show()
+
+plt.figure(figsize=(8, 6))
+plt.plot(history['weights_hidden'])
+plt.xlabel('Epoch')
+plt.ylabel('Weight Value')
+plt.title('Hidden Layer Squared Weights over Training')
+plt.show()
+

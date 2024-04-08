@@ -45,7 +45,7 @@ class Perceptron:
         Returns:
             history (dict): Training history containing MSE and classification error per epoch.
         """
-        history = {'mse_hidden': [], 'mse_output': [], 'classification_error': []}
+        history = {'mse_hidden': [], 'mse_output': [], 'classification_error': [], 'weights_hidden': []}
         for epoch in range(epochs):
             # Forward pass (hidden layer)
             hidden_outputs = sigmoid(np.dot(inputs, self.weights_hidden))
@@ -63,10 +63,12 @@ class Perceptron:
 
             # Calculate and store errors
 
-            history['mse_hidden'].append((hidden_error ** 2).sum(axis=0).mean())
+            history['mse_hidden'].append((hidden_error ** 2).sum(axis=0))
+            history['weights_hidden'].append((self.weights_hidden**2).mean(axis=0))
             history['mse_output'].append(mse(output, targets))
             history['classification_error'].append(np.mean(classify(output) != targets))
 
+        print('weights_hidden', self.weights_hidden)
         return history
 
 
