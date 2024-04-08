@@ -10,7 +10,7 @@ targets = np.array([[0], [1], [1], [0]])
 
 # Part 2: Perceptron Training and Evaluation
 learning_rate = 1
-epochs = 350
+epochs = 500
 start = time.time()
 
 perceptron = Perceptron(learning_rate=learning_rate)

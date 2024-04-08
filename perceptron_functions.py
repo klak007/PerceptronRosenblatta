@@ -68,7 +68,7 @@ class Perceptron:
             history['mse_output'].append(mse(output, targets))
             history['classification_error'].append(np.mean(classify(output) != targets))
 
-        print('weights_hidden', self.weights_hidden)
+        #print('weights_hidden', self.weights_hidden)
         return history
 
 
