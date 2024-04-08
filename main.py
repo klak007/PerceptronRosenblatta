@@ -45,7 +45,7 @@ plt.figure(figsize=(10, 12))
 # Plot MSE
 plt.subplot(311)
 plt.plot(history['mse_hidden'], label='Hidden Layer MSE')
-plt.plot(history['mse_output'], label='Output Layer MSE')
+#plt.plot(history['mse_output'], label='Output Layer MSE')
 plt.title('Mean Squared Error')
 plt.xlabel('Epochs')
 plt.ylabel('MSE')
