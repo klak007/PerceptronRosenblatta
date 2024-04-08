@@ -19,7 +19,7 @@ def classify(output, threshold=0.5):
 class Perceptron:
     """Perceptron class for learning the XOR problem."""
 
-    def __init__(self, learning_rate=0.01, num_inputs=2, num_hidden=2, num_outputs=1):
+    def __init__(self, learning_rate=0.01, num_inputs=2, num_hidden=10, num_outputs=1):
         """
         Initializes the perceptron with random weights.
 
@@ -62,12 +62,14 @@ class Perceptron:
             self.weights_hidden += self.learning_rate * np.dot(inputs.T, hidden_error)
 
             # Calculate and store errors
-            # history['mse_hidden'].append(mse(hidden_outputs, np.dot(inputs, self.weights_hidden)))
-            history['mse_hidden'].append(mse(hidden_outputs, targets))
+
+            history['mse_hidden'].append((hidden_error ** 2).sum(axis=0).mean())
             history['mse_output'].append(mse(output, targets))
             history['classification_error'].append(np.mean(classify(output) != targets))
 
         return history
+
+
 
     def predict(self, inputs):
         """
@@ -102,7 +104,7 @@ def perform_tests(num_tests, num_epochs, learning_rate):
 
     for _ in range(num_tests):
         # Generate random dataset for XOR problem
-        inputs = np.random.randint(0, 2, size=(4, 2))
+        inputs = np.array([[0, 0], [0, 1], [1, 0], [1, 1]])
         targets = solve_xor(inputs)
 
         # Create and train the perceptron
