@@ -62,7 +62,8 @@ class Perceptron:
             self.weights_hidden += self.learning_rate * np.dot(inputs.T, hidden_error)
 
             # Calculate and store errors
-            history['mse_hidden'].append(mse(hidden_outputs, np.dot(inputs, self.weights_hidden)))
+            # history['mse_hidden'].append(mse(hidden_outputs, np.dot(inputs, self.weights_hidden)))
+            history['mse_hidden'].append(mse(hidden_outputs, targets))
             history['mse_output'].append(mse(output, targets))
             history['classification_error'].append(np.mean(classify(output) != targets))
 

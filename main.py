@@ -45,37 +45,40 @@ plt.figure(figsize=(10, 12))
 # Plot MSE
 plt.subplot(311)
 plt.plot(history['mse_hidden'], label='Hidden Layer MSE')
-#plt.plot(history['mse_output'], label='Output Layer MSE')
-plt.title('Mean Squared Error')
+plt.title('Mean Squared Error Hidden Layer')
+plt.xlabel('Epochs')
+plt.ylabel('MSE')
+plt.legend()
+
+plt.subplot(312)
+plt.plot(history['mse_output'], label='Output Layer MSE')
+plt.title('Mean Squared Error Output Layer')
 plt.xlabel('Epochs')
 plt.ylabel('MSE')
 plt.legend()
 
 # Plot classification error
-plt.subplot(312)
+plt.subplot(313)
 plt.plot(history['classification_error'])
 plt.xlabel('Epoch')
 plt.ylabel('Classification Error')
 plt.title('Classification Error over Training')
 
-
-
 # Plot predictions
-plt.subplot(313)
-plt.scatter(random_data[:, 0], random_data[:, 1], c=predictions, cmap='coolwarm', label='Predicted Output')
-plt.title('Predictions on Random Data')
-plt.xlabel('Points')
-plt.ylabel('Output')
-plt.legend()
-plt.colorbar(label='Output')
-
+# plt.subplot(313)
+# plt.scatter(random_data[:, 0], random_data[:, 1], c=predictions, cmap='coolwarm', label='Predicted Output')
+# plt.title('Predictions on Random Data')
+# plt.xlabel('Points')
+# plt.ylabel('Output')
+# plt.legend()
+# plt.colorbar(label='Output')
 
 
 plt.tight_layout()
 plt.show()
 
 # Perform multiple tests
-num_tests = 10
+num_tests = 2
 accuracies = perform_tests(num_tests=num_tests, num_epochs=epochs, learning_rate=learning_rate)
 
 # Plot the accuracies
