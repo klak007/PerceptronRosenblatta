@@ -41,30 +41,34 @@ print('Classification Error:', (false_positives + false_negatives) / 4)
 print('Number of Epochs:', len(history['classification_error']))
 
 # Part 3: Plotting
-plt.figure(figsize=(10, 12))
+plt.figure(figsize=(12, 16))
 
 # Plot MSE
-plt.subplot(311)
+plt.subplot(411)
 plt.plot(history['mse_hidden'], label='Hidden Layer MSE')
 plt.title('Mean Squared Error over all inputs in hidden layer')
-plt.xlabel('Epochs')
+#plt.xlabel('Epochs')
 plt.ylabel('MSE')
 
-
-
-plt.subplot(312)
+plt.subplot(412)
 plt.plot(history['mse_output'], label='Output Layer MSE')
 plt.title('Mean Squared Error Output Layer')
-plt.xlabel('Epochs')
+#plt.xlabel('Epochs')
 plt.ylabel('MSE')
 
-
 # Plot classification error
-plt.subplot(313)
+plt.subplot(413)
 plt.plot(history['classification_error'])
-plt.xlabel('Epoch')
+#plt.xlabel('Epoch')
 plt.ylabel('Classification Error')
 plt.title('Classification Error over Training')
+
+plt.subplot(414)
+plt.plot(history['weights_hidden'])
+plt.xlabel('Epoch')
+plt.ylabel('Weight Value')
+plt.title('Hidden Layer Squared Weights over Training')
+plt.show()
 
 # Plot predictions
 # plt.subplot(313)
@@ -92,10 +96,5 @@ plt.title('Accuracy of Perceptron on XOR Problem ({} tests)'.format(num_tests))
 plt.ylim(0, 1)
 plt.show()
 
-plt.figure(figsize=(8, 6))
-plt.plot(history['weights_hidden'])
-plt.xlabel('Epoch')
-plt.ylabel('Weight Value')
-plt.title('Hidden Layer Squared Weights over Training')
-plt.show()
+
 
