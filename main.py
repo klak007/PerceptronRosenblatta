@@ -21,8 +21,8 @@ end = time.time()
 predictions = perceptron.predict(inputs)
 xor_output = solve_xor(inputs)
 
-print('inputs', inputs)
-print('Predictions:', predictions)
+print('Inputs:\n', inputs)
+print('Predictions:\n', predictions)
 
 true_positives = np.sum((predictions >= 0.5) & (xor_output == 1))
 true_negatives = np.sum((predictions < 0.5) & (xor_output == 0))
@@ -39,7 +39,7 @@ print('Learning Rate:', perceptron.learning_rate)
 print('Accuracy:', (true_positives + true_negatives) / 4)
 print('Classification Error:', (false_positives + false_negatives) / 4)
 print('Number of Epochs:', len(history['classification_error']))
-
+print('hidden weights:\n', perceptron.weights_hidden)
 # Part 3: Plotting
 plt.figure(figsize=(12, 16))
 
@@ -47,19 +47,19 @@ plt.figure(figsize=(12, 16))
 plt.subplot(411)
 plt.plot(history['mse_hidden'], label='Hidden Layer MSE')
 plt.title('Mean Squared Error over all inputs in hidden layer')
-#plt.xlabel('Epochs')
+plt.xlabel('Epoch')
 plt.ylabel('MSE')
 
 plt.subplot(412)
 plt.plot(history['mse_output'], label='Output Layer MSE')
 plt.title('Mean Squared Error Output Layer')
-#plt.xlabel('Epochs')
+plt.xlabel('Epoch')
 plt.ylabel('MSE')
 
 # Plot classification error
 plt.subplot(413)
 plt.plot(history['classification_error'])
-#plt.xlabel('Epoch')
+plt.xlabel('Epoch')
 plt.ylabel('Classification Error')
 plt.title('Classification Error over Training')
 
@@ -68,6 +68,8 @@ plt.plot(history['weights_hidden'])
 plt.xlabel('Epoch')
 plt.ylabel('Weight Value')
 plt.title('Hidden Layer Squared Weights over Training')
+
+plt.tight_layout()
 plt.show()
 
 # Plot predictions
